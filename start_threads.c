@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:21:38 by rabatist          #+#    #+#             */
-/*   Updated: 2025/02/28 16:07:50 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:24:06 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ void	philo_do(t_philo *philo)
 {
 	printf("[%lld] Philosopher %d thinks\n",
 		get_time() - philo->data->start_time, philo->id + 1);
-	if (philo->id % 2 == 0)
-		philo_do_even(philo);
-	else
-		philo_do_odd(philo);
+	pthread_mutex_lock(&philo->data->fork[philo->left_fork]);
+	printf("[%lld] Philosopher %d took the left fork\n",
+		get_time() - philo->data->start_time, philo->id + 1);
+	pthread_mutex_lock(&philo->data->fork[philo->right_fork]);
+	printf("[%lld] Philosopher %d took the right fork\n",
+		get_time() - philo->data->start_time, philo->id + 1);
 	pthread_mutex_lock(&philo->data->eating);
 	philo->death_timer = get_time();
 	philo->count_meal++;
@@ -96,7 +98,7 @@ void	*check_death(void *arg)
 			pthread_mutex_unlock(&data->eating);
 			i++;
 		}
-		usleep(1000);
+		usleep(500);
 	}
 	return (NULL);
 }

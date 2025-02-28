@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:27:10 by rabatist          #+#    #+#             */
-/*   Updated: 2025/02/28 16:10:21 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:23:44 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void	good_sleep(long long mili)
 
 	start = get_time();
 	while (get_time() - start < mili)
-		usleep(500);
+		usleep(50);
 }
