@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:14:05 by rabatist          #+#    #+#             */
-/*   Updated: 2025/02/28 16:10:58 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/01 18:21:14 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int	init_mutex(t_data *data)
 		i++;
 	}
 	if (pthread_mutex_init(&(data->message), NULL)
-		|| pthread_mutex_init(&(data->eating), NULL))
+		|| pthread_mutex_init(&(data->eating), NULL)
+		|| pthread_mutex_init(&(data->dead_mutex), NULL))
 		return (0);
 	return (1);
 }
