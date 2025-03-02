@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:27:10 by rabatist          #+#    #+#             */
-/*   Updated: 2025/03/01 18:24:27 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/02 02:32:04 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,20 @@ long long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	good_sleep(long long mili)
+void	good_sleep(long long mili, t_data *data)
 {
 	long long	start;
 
 	start = get_time();
 	while (get_time() - start < mili)
-		usleep(50);
+	{
+		usleep(100);
+		pthread_mutex_lock(&data->dead_mutex);
+		if (data->dead || data->end_routine)
+		{
+			pthread_mutex_unlock(&data->dead_mutex);
+			return ;
+		}
+		pthread_mutex_unlock(&data->dead_mutex);
+	}
 }

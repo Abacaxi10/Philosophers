@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:16:07 by rabatist          #+#    #+#             */
-/*   Updated: 2025/02/28 14:52:28 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/02 02:02:22 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	init_arg(int ac, char **av, t_data *data)
 		ac--;
 	}
 	data->dead = 0;
-	data->end_philo = 0;
+	data->end_routine = 0;
+	data->count_meal = 0;
 	data->n_philo = ft_atoi(av[1]);
 	data->t_to_die = ft_atoi(av[2]);
 	data->t_to_eat = ft_atoi(av[3]);

@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:21:37 by rabatist          #+#    #+#             */
-/*   Updated: 2025/02/28 16:11:00 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/02 02:32:09 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef struct s_data
 	int					t_to_sleep;
 	int					n_philo_eat;
 	int					dead;
-	int					end_philo;
+	int					end_routine;
+	int					count_meal;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		message;
 	pthread_mutex_t		eating;
@@ -51,7 +52,7 @@ typedef struct s_data
 int			ft_atoi(char *str);
 int			ft_isdigit(char *str);
 long long	get_time(void);
-void		good_sleep(long long mili);
+void		good_sleep(long long mili, t_data *data);
 
 // init.c
 void		free_mutex(int i, t_data *data);
