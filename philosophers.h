@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:21:37 by rabatist          #+#    #+#             */
-/*   Updated: 2025/03/02 02:32:09 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:48:33 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,24 @@ int			init_arg(int ac, char **av, t_data *data);
 
 //start_threads.c
 void		*philosopher_routine(void *arg);
-void		philo_do(t_philo *philo);
 int			start_threads(t_data *data);
-void		*check_death(void *arg);
 
-//philo_do.c
-void		philo_do_even(t_philo *philo);
-void		philo_do_odd(t_philo *philo);
+//death_or _full.c
+void		*check_death_or_full(void *arg);
+int			check_any_philosopher_died(t_data *data);
+void		handle_death(t_data *data, int philo_id);
+int			have_all_philo_ate(t_data *data);
+void		all_philo_ate(t_data *data);
+
+//routine.c
+void		*handle_single_philo(t_philo *philo);
+int			check_if_dead_or_full(t_philo *philo);
+int			take_right_fork(t_philo *philo);
+int			take_left_fork(t_philo *philo);
+void		eating(t_philo *philo);
+
+//routine2.c
+void		sleeping(t_philo *philo);
+void		thinking(t_philo *philo);
 
 #endif
