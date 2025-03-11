@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:00:50 by rabatist          #+#    #+#             */
-/*   Updated: 2025/03/03 19:30:26 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:30:03 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void	handle_death(t_data *data, int philo_id)
 	pthread_mutex_lock(&data->dead_mutex);
 	data->dead = 1;
 	pthread_mutex_unlock(&data->dead_mutex);
+	pthread_mutex_lock(&data->message);
 	printf("[%lld] Philosopher %d died\n",
 		get_time() - data->start_time, data->philo[philo_id].id + 1);
+	pthread_mutex_lock(&data->message);
 }
 
 int	have_all_philo_ate(t_data *data)

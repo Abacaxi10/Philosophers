@@ -6,7 +6,7 @@
 /*   By: rabatist <rabatist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:21:38 by rabatist          #+#    #+#             */
-/*   Updated: 2025/03/03 20:47:34 by rabatist         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:21:57 by rabatist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*philosopher_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		usleep(1000);
+		usleep(10000);
 	while (1)
 	{
 		if (check_if_dead_or_full(philo))
